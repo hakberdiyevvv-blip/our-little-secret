@@ -1,65 +1,240 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bir küçük sır</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bir Küçük Sır 🌷</title>
+
 <style>
-:root{--rose:#d86a97;--deep:#7b3655;--soft:#ffe8f1;--paper:#fffafd}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#fff8fb,#f8d6e5 75%);display:grid;place-items:center;padding:20px;color:var(--deep);font-family:Georgia,"Times New Roman",serif}
-.card{position:relative;width:min(100%,420px);min-height:690px;border-radius:34px;background:var(--paper);box-shadow:0 22px 70px #8e486533;padding:30px 25px;overflow:hidden;text-align:center}
-.card:before,.card:after{content:"";position:absolute;width:160px;height:160px;background:#fde8f2;border-radius:50%;opacity:.45;z-index:0}.card:before{left:-90px;top:-80px}.card:after{right:-95px;bottom:-80px}
-.content{position:relative;z-index:1}.top{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#b97895}.flower{font-size:42px;margin:22px 0 10px;animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-7px)}}
-h1{font-size:27px;font-weight:normal;margin:8px 0 12px}p{line-height:1.65}.sub{font-family:Arial,sans-serif;font-size:14px;color:#a66d87}
-.dots{display:flex;justify-content:center;gap:13px;margin:25px}.dot{width:11px;height:11px;border-radius:50%;background:#f4d2e1}.dot.active{background:var(--rose)}
-.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,285px);margin:20px auto}.key{border:1px solid #f6d9e5;border-radius:28px;background:#fff0f6;color:var(--deep);font-size:20px;padding:15px;cursor:pointer;transition:.15s}.key:hover{background:#f9d9e7;transform:scale(1.03)}
-.small{font-family:Arial,sans-serif;font-size:12px;color:#b18499}.err{height:20px;font-family:Arial,sans-serif;font-size:12px;color:#c34f78}
-#open{display:none}.envelope{font-size:45px;margin:12px}.photo{display:none;width:100%;max-height:260px;object-fit:cover;border-radius:22px;margin:18px 0;border:5px solid white;box-shadow:0 8px 20px #d18aa633}
-.letter{white-space:pre-line;text-align:left;background:#fff1f7;border:1px solid #f7dce8;padding:22px;border-radius:22px;line-height:1.8;font-size:16px;margin-top:20px}.foot{margin-top:24px;font-size:13px;color:#b97895}.heart{position:fixed;bottom:-30px;font-size:20px;opacity:.5;animation:float 7s linear infinite;pointer-events:none}@keyframes float{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
-#photoUrl{display:none}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffe5ec, #f9d5e5, #fff0f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #6b354b;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: float 8s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.card {
+  width: 90%;
+  max-width: 430px;
+  background: rgba(255,255,255,0.82);
+  padding: 35px 25px;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(150,60,100,0.15);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+.subtitle {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 12px;
+  border: 1px solid #e9b8cc;
+  background: #fff7fa;
+  text-align: center;
+  font-size: 18px;
+  color: #6b354b;
+}
+
+button {
+  border: none;
+  padding: 14px 22px;
+  margin-top: 15px;
+  border-radius: 14px;
+  background: #d77b9d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.04);
+  background: #bd5f85;
+}
+
+#error {
+  color: #c05275;
+  margin-top: 10px;
+}
+
+#letter {
+  display: none;
+  animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message {
+  line-height: 2;
+  font-size: 17px;
+  text-align: left;
+  margin-top: 25px;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 25px;
+  font-style: italic;
+}
+
+.flower {
+  font-size: 45px;
+  margin: 15px;
+}
+
 </style>
 </head>
+
 <body>
-<div class="card"><div class="content">
- <div class="top">küçük bir sürpriz</div>
- <section id="lock">
-  <div class="flower">♡</div><h1>Sana sakladığım<br>küçük bir şey var.</h1><p class="sub">Bu küçük kapıyı açmak için<br>4 haneli şifreni gir.</p>
-  <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-  <div class="pad">
-   <button class="key" onclick="press('1')">1</button><button class="key" onclick="press('2')">2</button><button class="key" onclick="press('3')">3</button>
-   <button class="key" onclick="press('4')">4</button><button class="key" onclick="press('5')">5</button><button class="key" onclick="press('6')">6</button>
-   <button class="key" onclick="press('7')">7</button><button class="key" onclick="press('8')">8</button><button class="key" onclick="press('9')">9</button>
-   <button class="key" onclick="clearPin()">⌫</button><button class="key" onclick="press('0')">0</button><button class="key" onclick="clearPin()">↺</button>
-  </div><div class="err" id="err"></div><div class="small">bir ipucu: sizin için anlamlı bir tarih olabilir ♡</div>
- </section>
- <section id="open">
-  <div class="envelope">💌</div><h1 id="heading">Sana…</h1>
-  <p class="sub" id="dateLine"></p>
-  <img id="photo" class="photo" alt="Sizin fotoğrafınız">
-  <div class="letter" id="letter"></div><div class="foot">Bunu ne zaman istersen yeniden okuyabilirsin. ♡</div>
- </section>
-</div></div>
+
+<div class="card">
+
+<div id="lock">
+
+<div class="flower">🌷</div>
+
+<h1>Sana küçük bir sır var...</h1>
+
+<p class="subtitle">
+Bu küçük kapıyı açmak için<br>
+bir soruyu cevaplaman gerekiyor. 🤍
+</p>
+
+<p class="subtitle">
+Sana bir şey söylemek için<br>
+bazen 3 kelime yeter...<br><br>
+<strong>Benim için anlamı olan 3 rakamı bul. 🌙</strong>
+</p>
+
+<input id="code" type="password" maxlength="3"
+placeholder="•••" inputmode="numeric">
+
+<button onclick="unlock()">Kapıyı aç 💌</button>
+
+<p id="error"></p>
+
+</div>
+
+<div id="letter">
+
+<div class="flower">🌸</div>
+
+<h1>Biraz da sana... 🤍</h1>
+
+<div class="message">
+
+Bazen insan hiç beklemediği bir zamanda,
+hiç beklemediği biriyle karşılaşır.
+
+Sonra küçük sohbetler, gülümsemeler,
+birbirini merak etmek ve zamanın
+nasıl geçtiğini anlamamak...
+
+Belki de güzel şeyler büyük cümlelerle
+başlamıyor. Bazen yalnızca birinin
+yanında kendini huzurlu hissetmek
+yetiyor.
+
+Seninle konuşurken ve yanındayken
+hissettiğim şeyin kıymetini biliyorum.
+
+Bu küçük sayfayı da yüzünde
+küçük bir tebessüm bırakmak için yaptım. 🌷
+
+<br><br>
+
+<strong>
+İyi ki yollarımız kesişmiş.
+</strong>
+
+</div>
+
+<div class="signature">
+Sana küçük bir tebessüm bırakmak isteyen biri. ✨
+</div>
+
+</div>
+
+</div>
+
 <script>
-// ==== KİŞİSELLEŞTİRME: bu bölümdeki alanları değiştir ====
-const PIN="2609"; // 4 haneli şifren
-const TITLE="Sana…"; // başlık
-const DATE="Birlikte güzel anılar biriktirmeye"; // tarih veya kısa satır
-const PHOTO_URL=""; // fotoğrafın GitHub'daki dosya yolu/URL; boş bırakılabilir
-const MESSAGE=`Bazen insan, birinin hayatına ne zaman dokunduğunu fark etmiyor.
 
-Seninle konuşmak, gülümsemek ve küçük anları paylaşmak benim için güzel bir şeye dönüştü.
+function unlock() {
+  const code = document.getElementById("code").value;
 
-Bu sayfayı da yüzünde küçük bir tebessüm olsun diye hazırladım.
+  if (code === "143") {
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("letter").style.display = "block";
+  } else {
+    document.getElementById("error").innerText =
+      "Hmm... olmadı. Bir daha düşün. 🌸";
+  }
+}
 
-İyi ki yollarımız kesişmiş. ♡`;
-// ==== KİŞİSELLEŞTİRME SONU ====
-let entered="";
-document.getElementById("heading").textContent=TITLE;
-document.getElementById("dateLine").textContent=DATE;
-document.getElementById("letter").textContent=MESSAGE;
-if(PHOTO_URL.trim()){const img=document.getElementById("photo");img.src=PHOTO_URL;img.style.display="block";}
-function dots(){document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i<entered.length))}
-function press(n){if(entered.length===4)return;entered+=n;dots();if(entered.length===4){if(entered===PIN){document.getElementById("lock").style.display="none";document.getElementById("open").style.display="block";hearts()}else{document.getElementById("err").textContent="Şifre olmadı, tekrar deneyebilirsin.";setTimeout(()=>{entered="";dots();document.getElementById("err").textContent=""},850)}}}
-function clearPin(){entered=entered.slice(0,-1);dots();document.getElementById("err").textContent=""}
-function hearts(){for(let i=0;i<14;i++){let h=document.createElement("span");h.className="heart";h.textContent=["♡","♥","💕"][i%3];h.style.left=(Math.random()*100)+"vw";h.style.animationDelay=(Math.random()*5)+"s";h.style.animationDuration=(5+Math.random()*5)+"s";document.body.appendChild(h)}}
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+
+  const emojis = ["💗", "🌸", "💕", "🌷", "✨"];
+  heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 25) + "px";
+  heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 700);
+
 </script>
-</body></html>
+
+</body>
+</html>
