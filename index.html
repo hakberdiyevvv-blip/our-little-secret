@@ -3,235 +3,282 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Little Winter ✨</title>
+<title>Our Little Secret 🌹</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
 
-:root {
-  --wine: #67283d;
-  --deep: #10271f;
-  --gold: #d6b779;
-  --cream: #fff5e8;
-  --rose: #dca3ae;
+:root{
+  --wine:#281A2D;
+  --rose:#C98B9A;
+  --ivory:#F3E8E3;
+  --soft:#E6B7C4;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
 
-body {
-  margin: 0;
-  min-height: 100vh;
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--ivory);
   background:
-    radial-gradient(circle at top, #31483b 0%, #172b25 45%, #101b18 100%);
-  color: var(--cream);
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
+    radial-gradient(circle at top,#603747 0%,#351E2B 45%,#17121B 100%);
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
 }
 
-#snow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
+#stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
 }
 
-.wrap {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
+.star{
+  position:absolute;
+  color:#F3D8DF;
+  animation:twinkle 3s infinite ease-in-out;
 }
 
-.card {
-  width: 100%;
-  max-width: 480px;
-  padding: 38px 26px;
-  text-align: center;
-  border: 1px solid rgba(214,183,121,.4);
-  border-radius: 28px;
-  background: rgba(25,38,31,.86);
-  box-shadow: 0 20px 80px rgba(0,0,0,.35);
-  backdrop-filter: blur(12px);
-  position: relative;
-  z-index: 2;
+@keyframes twinkle{
+  0%,100%{opacity:.2;transform:scale(.7)}
+  50%{opacity:1;transform:scale(1.2)}
 }
 
-.small {
-  color: var(--gold);
-  letter-spacing: 4px;
-  font-size: 11px;
-  text-transform: uppercase;
+.heart{
+  position:fixed;
+  bottom:-30px;
+  color:#C98B9A;
+  pointer-events:none;
+  animation:floatUp 7s linear forwards;
+  z-index:10;
 }
 
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
+@keyframes floatUp{
+  to{transform:translateY(-110vh) rotate(35deg);opacity:0}
 }
 
-h1 {
-  font-size: 39px;
-  margin: 18px 0 10px;
+.container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  position:relative;
+  z-index:2;
 }
 
-h2 {
-  font-size: 29px;
-  color: var(--gold);
+.card{
+  width:min(100%,480px);
+  border:1px solid rgba(201,139,154,.35);
+  border-radius:28px;
+  padding:30px 24px;
+  background:rgba(40,26,45,.82);
+  backdrop-filter:blur(12px);
+  box-shadow:0 15px 70px rgba(0,0,0,.35);
+  text-align:center;
+  animation:fade .7s ease;
 }
 
-p {
-  line-height: 1.8;
-  font-size: 14px;
-  color: #e7dfd2;
+@keyframes fade{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.ornament {
-  font-size: 38px;
-  margin-bottom: 10px;
-  animation: glow 3s infinite;
+h1,h2{
+  font-family:'Playfair Display',serif;
+  font-weight:400;
 }
 
-@keyframes glow {
-  50% { transform: scale(1.08); filter: drop-shadow(0 0 14px #d6b779); }
+h1{
+  font-size:35px;
+  color:var(--rose);
 }
 
-input {
-  width: 100%;
-  margin-top: 18px;
-  padding: 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(214,183,121,.6);
-  background: rgba(255,255,255,.06);
-  color: white;
-  font-size: 23px;
-  letter-spacing: 8px;
-  text-align: center;
-  outline: none;
+h2{
+  font-size:27px;
 }
 
-input:focus { border-color: var(--gold); }
-
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 14px;
-  border-radius: 40px;
-  border: 1px solid var(--gold);
-  background: linear-gradient(135deg, #773347, #4e2635);
-  color: var(--cream);
-  font-family: 'Playfair Display', serif;
-  font-size: 17px;
-  cursor: pointer;
-  transition: .25s;
+p{
+  line-height:1.8;
+  font-weight:300;
 }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(214,183,121,.2);
+.rose{
+  font-size:60px;
+  animation:rosePulse 3s infinite;
 }
 
-.choice {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(214,183,121,.35);
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
+@keyframes rosePulse{
+  50%{transform:scale(1.12)}
 }
 
-.choice:hover {
-  background: rgba(214,183,121,.13);
+input{
+  width:100%;
+  padding:15px;
+  margin:15px 0;
+  border:1px solid var(--rose);
+  background:#211723;
+  border-radius:15px;
+  color:white;
+  font-size:22px;
+  text-align:center;
+  letter-spacing:8px;
+  outline:none;
 }
 
-.hidden { display: none !important; }
-
-#error {
-  color: #e7a5ae;
-  min-height: 24px;
+button{
+  border:1px solid rgba(201,139,154,.5);
+  background:linear-gradient(135deg,#C98B9A,#8F5268);
+  color:white;
+  padding:13px 18px;
+  border-radius:15px;
+  cursor:pointer;
+  font-family:'Poppins',sans-serif;
+  transition:.25s;
+  margin:6px;
 }
 
-#progress {
-  color: var(--gold);
-  font-size: 12px;
-  letter-spacing: 2px;
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 20px rgba(201,139,154,.25);
 }
 
-.letter {
-  text-align: left;
-  padding: 20px;
-  background: rgba(255,245,232,.05);
-  border: 1px solid rgba(214,183,121,.2);
-  border-radius: 20px;
-  line-height: 2;
-  white-space: pre-line;
+.option{
+  display:block;
+  width:100%;
+  background:#392536;
+  border:1px solid #785265;
+  text-align:left;
+  margin:12px 0;
 }
 
-.footer {
-  margin-top: 30px;
-  font-size: 12px;
-  color: var(--gold);
-  letter-spacing: 2px;
+.option:hover{
+  background:#593448;
 }
 
-#hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 10;
+.hidden{display:none!important}
+
+.small{
+  color:#D6B4BF;
+  font-size:13px;
+  letter-spacing:2px;
 }
 
-.heart {
-  position: absolute;
-  bottom: -40px;
-  animation: float 5s linear forwards;
+.progress{
+  height:5px;
+  background:#493141;
+  border-radius:10px;
+  margin:20px 0;
+  overflow:hidden;
 }
 
-@keyframes float {
-  to { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+.bar{
+  height:100%;
+  width:0%;
+  background:var(--rose);
+  transition:.5s;
 }
 
-#quizMessage {
-  color: var(--rose);
-  min-height: 28px;
+.letter{
+  background:#F3E8E3;
+  color:#382434;
+  border-radius:20px;
+  padding:23px;
+  text-align:left;
+  line-height:1.9;
+  font-family:'Playfair Display',serif;
+  font-size:17px;
+  white-space:pre-line;
+  animation:fade .8s;
 }
 
+#error{
+  color:#E9A6B6;
+  min-height:24px;
+}
+
+#music{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  z-index:20;
+  border-radius:50px;
+}
+
+.footer{
+  margin-top:20px;
+  color:#C98B9A;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+@media(max-width:450px){
+  h1{font-size:30px}
+  .card{padding:25px 18px}
+  .letter{font-size:16px}
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="snow"></canvas>
-<div id="hearts"></div>
+<div id="stars"></div>
 
-<div class="wrap">
+<audio id="song" loop>
+  <source src="Lovers Rock.mp3" type="audio/mpeg">
+</audio>
 
-<div class="card" id="lock">
+<button id="music" onclick="toggleMusic()">♫ Müziği aç</button>
 
-  <div class="ornament">❄️</div>
-  <div class="small">A little winter surprise</div>
+<div class="container">
+<div class="card">
 
-  <h1>Our Little Winter</h1>
+<!-- LOCK -->
+
+<section id="lock">
+
+  <div class="rose">🌹</div>
+
+  <div class="small">A LITTLE SECRET</div>
+
+  <h1>Our Little Secret</h1>
 
   <p>
-    Bu küçük dünyanın kapısını açmak için
-    sana özel bir sayı var. ✨
+    Bu küçük dünyanın bir anahtarı var...
   </p>
 
-  <input id="pin" type="password"
-    inputmode="numeric" maxlength="4"
-    placeholder="••••">
+  <p class="small">
+    Belki de onu zaten biliyorsundur. ♡
+  </p>
 
-  <button onclick="unlock()">Kapıyı Aç ♡</button>
+  <input
+    id="pin"
+    type="password"
+    maxlength="4"
+    inputmode="numeric"
+    placeholder="••••"
+    autocomplete="off"
+  >
+
+  <button onclick="unlock()">Kapıyı aç ♡</button>
 
   <div id="error"></div>
 
-  <div class="footer">MADE WITH LOVE ♡</div>
+  <div class="footer">
+    ONLY FOR YOU
+  </div>
 
-</div>
+</section>
 
-<div class="card hidden" id="welcome">
+<!-- WELCOME -->
 
-  <div class="ornament">🎄</div>
-  <div class="small">December is coming</div>
+<section id="welcome" class="hidden">
+
+  <div class="rose">✨</div>
+
+  <div class="small">WELCOME TO OUR LITTLE WORLD</div>
 
   <h1>Hoş geldin.</h1>
 
@@ -241,290 +288,363 @@ button:hover {
     küçük bir oyunumuz var. 🌙
   </p>
 
-  <button onclick="startQuiz()">Küçük oyuna başla ✨</button>
-
-  <button onclick="toggleMusic()" id="musicBtn">
-    ♫ Şarkıyı başlat
+  <button onclick="startQuiz()">
+    Küçük oyuna başla ♡
   </button>
 
+</section>
+
+<!-- QUIZ -->
+
+<section id="game" class="hidden">
+
+  <div class="rose">💌</div>
+
+  <div class="small">A LITTLE GAME</div>
+
+  <h2>Biraz seni tanıyalım...</h2>
+
+  <div class="progress">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <div id="quiz"></div>
+
+  <div id="quizMessage"></div>
+
+</section>
+
+<!-- FINAL -->
+
+<section id="final" class="hidden">
+
+  <div class="rose">💗</div>
+
+  <div class="small">A LETTER JUST FOR YOU</div>
+
+  <h1>Bir şey söylemek istiyorum...</h1>
+
+  <div class="letter">
+    <div id="letterText"></div>
+  </div>
+
+  <button onclick="moreHearts()">
+    ♡ Kalpleri serbest bırak ♡
+  </button>
+
+  <div class="footer">
+    OUR LITTLE SECRET ♡
+  </div>
+
+</section>
+
 </div>
-
-<div class="card hidden" id="quiz">
-
-  <div class="ornament">♡</div>
-
-  <div id="progress"></div>
-
-  <h2 id="question"></h2>
-
-  <div id="choices"></div>
-
-  <p id="quizMessage"></p>
-
 </div>
-
-<div class="card hidden" id="final">
-
-  <div class="ornament">🌟</div>
-
-  <div class="small">A little letter for you</div>
-
-  <h1>Son bir sürpriz...</h1>
-
-  <div class="letter" id="letter"></div>
-
-  <button onclick="heartRain()">♡ Kalpleri serbest bırak ♡</button>
-
-  <div class="footer">YOU ARE MY FAVORITE PART ♡</div>
-
-</div>
-
-</div>
-
-<audio id="song" loop>
-  <source src="Lovers Rock.mp3" type="audio/mpeg">
-</audio>
 
 <script>
 
 const SECRET = "2609";
 
-function unlock() {
-  const pin = document.getElementById("pin").value;
+function unlock(){
 
-  if(pin === SECRET) {
-    show("welcome");
+  const value = document.getElementById("pin").value;
+
+  if(value === SECRET){
+
+    document.getElementById("lock").classList.add("hidden");
+    document.getElementById("welcome").classList.remove("hidden");
+
     heartRain();
-  } else {
+
+  }else{
+
     document.getElementById("error").textContent =
-      "Hmm... tekrar dene sevgilim ♡";
+      "Hmm... anahtar yanlış gibi. Bir daha dene ♡";
+
   }
 }
 
-function show(id) {
-  ["lock","welcome","quiz","final"].forEach(x =>
-    document.getElementById(x).classList.add("hidden")
-  );
-  document.getElementById(id).classList.remove("hidden");
-}
+document.getElementById("pin").addEventListener("keydown",function(e){
+  if(e.key==="Enter")unlock();
+});
 
-const song = document.getElementById("song");
+function startQuiz(){
 
-function toggleMusic() {
-  if(song.paused) {
-    song.play();
-    document.getElementById("musicBtn").textContent =
-      "♫ Şarkıyı durdur";
-  } else {
-    song.pause();
-    document.getElementById("musicBtn").textContent =
-      "♫ Şarkıyı başlat";
-  }
+  document.getElementById("welcome").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+
+  current=0;
+  renderQuestion();
+
 }
 
 const questions = [
-  {
-    q: "Sence bizim en güzel anımız ne?",
-    a: [
-      "İlk buluşmamız ☕",
-      "Birbirimize sarıldığımız an ♡",
-      "Birlikte güldüğümüz an ✨"
-    ],
-    m: [
-      "O günün bende ayrı bir yeri var. ♡",
-      "Ben de o anı tekrar yaşamak isterdim.",
-      "Seninle gülmek, en sevdiğim şeylerden biri."
-    ]
-  },
-  {
-    q: "Bir kış akşamı birlikte olsak?",
-    a: [
-      "Battaniye, film ve sıcak çikolata ☕",
-      "Gece yürüyüşü ve kar ❄️",
-      "Bir kafede uzun uzun sohbet ♡"
-    ],
-    m: [
-      "Tam hayalimdeki akşam.",
-      "Sen yanımda ol, soğuk hiç önemli değil.",
-      "Saatlerin nasıl geçtiğini anlamayız."
-    ]
-  },
-  {
-    q: "Sana bir dilek hakkı verilse?",
-    a: [
-      "Birlikte daha çok anı biriktirmek ♡",
-      "Mutlu ve huzurlu olmak 🌙",
-      "Birlikte bir sürü yer keşfetmek ✈️"
-    ],
-    m: [
-      "Ben de bunu diliyorum.",
-      "Senin huzurun benim için de önemli.",
-      "Belki bir gün hepsini birlikte yaparız."
-    ]
-  },
-  {
-    q: "Son soru... ❤️",
-    a: [
-      "Beni biraz daha tanımak ister misin? ♡",
-      "Bu küçük dünyada kalmak ister misin? ✨",
-      "Birlikte yeni anılar yazalım mı? 🌷"
-    ],
-    m: [
-      "O zaman hikâyemiz devam etsin.",
-      "Bu dünya senin için hazırlandı.",
-      "En güzel sayfalar belki henüz yazılmadı."
-    ]
-  }
+
+{
+  q:"Sence bizim en güzel şeyimiz ne?",
+  options:[
+    "Birbirimizi anlamamız ♡",
+    "Birlikte gülmemiz 😄",
+    "Sessizliğimiz bile güzel olması 🌙",
+    "Hepsi, tabii ki 😌"
+  ],
+  messages:[
+    "Anlaşabilmek, bence de çok güzel bir şey. ♡",
+    "Seninle gülmek, favorilerimden biri.",
+    "Bazen hiçbir şey söylememek de çok şey anlatıyor.",
+    "Fena cevap değil, zekice seçim. 😌"
+  ]
+},
+
+{
+  q:"Bir kış akşamı birlikte olsak?",
+  options:[
+    "Uzun bir yürüyüş ❄️",
+    "Kahve ve sohbet ☕",
+    "Film ve sarılmak 🎬",
+    "Hepsi, sen yanımda ol yeter ♡"
+  ],
+  messages:[
+    "Kar, yürüyüş ve sen... güzel bir plan.",
+    "Kahve bahanesiyle saatlerce konuşabiliriz.",
+    "Filmi izleyen kim olur, orası biraz şüpheli. 😏",
+    "Bunu seçmen biraz hoşuma gitti."
+  ]
+},
+
+{
+  q:"Sana bir dilek hakkı verilse?",
+  options:[
+    "Mutlu olmak ✨",
+    "Güzel anılar biriktirmek ♡",
+    "Bir sürü yer keşfetmek 🌍",
+    "Huzurlu bir hayat 🌙"
+  ],
+  messages:[
+    "Mutluluğun hiç eksik olmasın.",
+    "Bence güzel anılar hayatın en iyi kısmı.",
+    "Belki bir gün bazı yerleri birlikte keşfederiz.",
+    "Huzur, bazen her şeyden daha değerli."
+  ]
+},
+
+{
+  q:"Son bir soru... 😌",
+  options:[
+    "Beni biraz daha tanımak ister misin? ♡",
+    "Birlikte daha fazla anı biriktirelim mi?",
+    "Bu küçük dünyada biraz daha kalalım mı? ✨",
+    "Bu soruya cevap vermek zorunda mıyım? 😂"
+  ],
+  messages:[
+    "O zaman acele etmeden birbirimizi tanıyalım. ♡",
+    "Güzel anılar için ben varım.",
+    "Bu dünya zaten senin için hazırlandı. 😌",
+    "Hayır, ama kaçışın da yok... şaka şaka. 😂"
+  ]
+}
+
 ];
 
-let current = 0;
+let current=0;
 
-function startQuiz() {
-  current = 0;
-  show("quiz");
-  renderQuestion();
-}
+function renderQuestion(){
 
-function renderQuestion() {
-  document.getElementById("progress").textContent =
-    "QUESTION " + (current+1) + " / " + questions.length;
+  const q=questions[current];
 
-  document.getElementById("question").textContent =
-    questions[current].q;
+  document.getElementById("bar").style.width =
+    ((current/questions.length)*100)+"%";
 
-  document.getElementById("quizMessage").textContent = "";
+  document.getElementById("quizMessage").textContent="";
 
-  const choices = document.getElementById("choices");
-  choices.innerHTML = "";
+  let html=`<h2>${q.q}</h2>`;
 
-  questions[current].a.forEach((answer, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.textContent = answer;
-    btn.onclick = () => selectAnswer(i);
-    choices.appendChild(btn);
+  q.options.forEach((option,i)=>{
+
+    html+=`
+      <button class="option" onclick="answer(${i})">
+        ${option}
+      </button>
+    `;
+
   });
+
+  document.getElementById("quiz").innerHTML=html;
+
 }
 
-function selectAnswer(i) {
-  document.getElementById("quizMessage").textContent =
-    questions[current].m[i];
+function answer(i){
+
+  const q=questions[current];
+
+  document.getElementById("quiz").innerHTML="";
+
+  document.getElementById("quizMessage").textContent=q.messages[i];
 
   heartRain();
 
-  setTimeout(() => {
+  setTimeout(()=>{
+
     current++;
 
-    if(current < questions.length) {
+    if(current<questions.length){
+
       renderQuestion();
-    } else {
-      show("final");
-      typeLetter();
+
+    }else{
+
+      document.getElementById("bar").style.width="100%";
+      showFinal();
+
     }
-  }, 1300);
+
+  },1700);
+
 }
 
-const message = `Sevgilim,
+function showFinal(){
 
-Bu küçük siteyi hazırlarken yüzünde küçük bir tebessüm oluşmasını istedim.
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
 
-Bazen büyük şeylere gerek yok. Küçük bir mesaj, bir şarkı, bir gülüş ya da yalnızca yanında olduğunu hissetmek bile yeterli.
+  const text=`Güneşim,
 
-Seninle konuştuğumda, güldüğümüzde ve birlikte zaman geçirdiğimizde güzel şeylerin yalnızca filmlerde olmadığını hatırlıyorum.
+Sana karşı cool davranmaya çalışsam da sanırım pek başarılı değilim. Çünkü konu sen olunca, normalde oldukça mantıklı olan beynim ara sıra yıllık izne çıkıyor. 
 
-Belki bu kış kar yağar, belki yağmaz. Ama bu küçük kış dünyasında sana ayırdığım bir yer hep olacak.
+Ama itiraf edeyim, bundan pek şikâyetçi değilim.
 
-Yeni yıl yaklaşırken sana daha fazla mutluluk, huzur, güzel anılar ve bol bol kahkaha diliyorum.
+Seninle konuşmak günün en güzel tesadüflerinden biri. Gülüşün, küçük triplerin, tatlı inatların ve bazen beni kelimenin tam anlamıyla şaşkına çeviren hâllerin... Sanırım hepsinin ayrı bir yeri var bende.
 
-Ve belki... bunların bir kısmını birlikte yaşarız.
+Sana büyük büyük sözler vermektense, küçük ama gerçek şeyler sunmayı tercih ederim. Güzel günlerinde yanında gülmeyi, zor günlerinde yanında olmayı ve arada sırada seni gereksiz yere güldürmeyi mesela.
 
-Seni gülümsetebilmek dileğiyle.
+Gerçi seni güldürmek konusunda bazen kendimi fazla ciddiye alıyorum. Komedyenlik kariyerim henüz başlamadı ama senin yanında deneme sürecindeyim. 😌
 
-♡`;
+Şaka bir yana, sende sevdiğim şey sadece güzelliğin değil. Sende insanın biraz daha kalmak istediği bir his var. Acele etmeden, rol yapmadan, kendimiz gibi olabildiğimiz bir his.
 
-function typeLetter() {
-  const el = document.getElementById("letter");
-  el.textContent = "";
-  let i = 0;
+Ve galiba ben o hissi oldukça sevdim.
 
-  function step() {
-    if(i < message.length) {
-      el.textContent += message.charAt(i);
+İyi ki düğüne gitmişiz, büyücü kız. 🪄❤️
+
+Kim bilir, belki de o gün sen biraz büyü yaptın, ben de farkında olmadan büyüne kapıldım. Şimdi çıkış yolu aramıyorum, hatta sanırım hiç aramak istemiyorum. 😌
+
+Bu küçük siteyi de sana özel yaptım. Evet, biraz uğraştım. Evet, birkaç kez hata almış olabilirim. Hayır, bundan sonra yazılımcı olduğumu iddia etmeyeceğim. 😂
+
+Ama senin yüzünde bir tebessüm oluşturmak için uğraşmak... Buna değdi.
+
+Romantiklik dozunu ayarlamaya çalıştım ama sanırım ayar düğmesi sende kalmış. 😌
+
+İyi ki o düğüne gitmişiz, büyücü kız. ♡`;
+
+  typeText(text);
+  heartRain();
+
+}
+
+function typeText(text){
+
+  const el=document.getElementById("letterText");
+
+  el.textContent="";
+
+  let i=0;
+
+  function write(){
+
+    if(i<text.length){
+
+      el.textContent+=text.charAt(i);
       i++;
-      setTimeout(step, 24);
+
+      setTimeout(write,22);
+
     }
+
   }
 
-  step();
+  write();
+
 }
 
-function heartRain() {
-  const container = document.getElementById("hearts");
+const song=document.getElementById("song");
 
-  for(let i=0; i<18; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = ["♡","❤","❄","✨"][Math.floor(Math.random()*4)];
-    heart.style.left = Math.random()*100 + "%";
-    heart.style.fontSize = (16 + Math.random()*25) + "px";
-    heart.style.animationDuration = (3 + Math.random()*3) + "s";
+function toggleMusic(){
 
-    container.appendChild(heart);
+  const button=document.getElementById("music");
 
-    setTimeout(() => heart.remove(), 6000);
+  if(song.paused){
+
+    song.play().then(()=>{
+
+      button.textContent="♫ Müziği kapat";
+
+    }).catch(()=>{
+
+      button.textContent="♫ Tekrar dene";
+
+    });
+
+  }else{
+
+    song.pause();
+    button.textContent="♫ Müziği aç";
+
   }
+
 }
 
-// Snow animation
+function heartRain(){
 
-const canvas = document.getElementById("snow");
-const ctx = canvas.getContext("2d");
+  for(let i=0;i<18;i++){
 
-let flakes = [];
+    setTimeout(()=>{
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+      const heart=document.createElement("div");
+
+      heart.className="heart";
+
+      heart.textContent=["♡","♥️","🌹","💗","✨"][Math.floor(Math.random()*5)];
+
+      heart.style.left=Math.random()*100+"vw";
+      heart.style.fontSize=(15+Math.random()*25)+"px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(()=>heart.remove(),7000);
+
+    },i*200);
+
+  }
+
 }
 
-window.addEventListener("resize", resize);
-resize();
-
-for(let i=0; i<100; i++) {
-  flakes.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: Math.random()*3+1,
-    s: Math.random()*1.5+.5
-  });
+function moreHearts(){
+  heartRain();
 }
 
-function snow() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "rgba(255,255,255,.75)";
+function createStars(){
 
-  flakes.forEach(f => {
-    ctx.beginPath();
-    ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
-    ctx.fill();
+  const area=document.getElementById("stars");
 
-    f.y += f.s;
-    f.x += Math.sin(f.y/30)*.4;
+  for(let i=0;i<75;i++){
 
-    if(f.y > canvas.height) {
-      f.y = -5;
-      f.x = Math.random()*canvas.width;
-    }
-  });
+    const star=document.createElement("div");
 
-  requestAnimationFrame(snow);
+    star.className="star";
+    star.textContent="✦";
+
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+
+    star.style.fontSize=(5+Math.random()*12)+"px";
+    star.style.animationDelay=Math.random()*3+"s";
+
+    area.appendChild(star);
+
+  }
+
 }
 
-snow();
-
-document.getElementById("pin").addEventListener("keydown", e => {
-  if(e.key === "Enter") unlock();
-});
+createStars();
 
 </script>
 </body>
