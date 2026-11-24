@@ -1,1 +1,450 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Winter ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+:root {
+  --wine: #6B243E;
+  --rose: #D8A7B1;
+  --ivory: #F4EBDD;
+  --gold: #C6A96C;
+  --forest: #21352D;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, #642D44 0%, #351B2A 45%, #1B1420 100%);
+  color: var(--ivory);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+#snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.snowflake {
+  position: fixed;
+  top: -20px;
+  color: white;
+  opacity: .65;
+  pointer-events: none;
+  animation: snowfall linear forwards;
+}
+
+@keyframes snowfall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.glow {
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  background: rgba(198,169,108,.08);
+  filter: blur(90px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.glow.one { top: 5%; left: 5%; }
+.glow.two { bottom: 5%; right: 5%; }
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.top-icon {
+  font-size: 34px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .55; transform: scale(.96); }
+}
+
+.title {
+  font-family: 'Great Vibes', cursive;
+  color: var(--rose);
+  font-size: clamp(45px, 11vw, 65px);
+  margin: 0;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-top: 8px;
+}
+
+.small-text {
+  font-size: 19px;
+  color: #e9d6d8;
+  margin: 25px 0;
+}
+
+.pin-box {
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(198,169,108,.35);
+  border-radius: 24px;
+  padding: 35px 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 45px rgba(0,0,0,.2);
+}
+
+.pin-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 25px;
+  letter-spacing: 10px;
+  text-align: center;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(216,167,177,.4);
+  border-radius: 12px;
+  color: var(--ivory);
+  outline: none;
+  font-family: serif;
+}
+
+.pin-input:focus {
+  border-color: var(--gold);
+}
+
+.pin-input::placeholder {
+  color: rgba(244,235,221,.3);
+}
+
+.enter-btn, .music-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, #7b3049, #542337);
+  color: var(--ivory);
+  border-radius: 40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.enter-btn:hover, .music-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #8d4057, #6B243E);
+  box-shadow: 0 0 25px rgba(216,167,177,.15);
+}
+
+.error {
+  min-height: 24px;
+  color: #e7a8b5;
+  margin-top: 12px;
+  font-size: 17px;
+}
+
+.footer {
+  margin-top: 30px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: rgba(244,235,221,.55);
+}
+
+#letterScreen {
+  display: none;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.letter {
+  background: linear-gradient(145deg, #F4EBDD, #eadccf);
+  color: #492435;
+  border-radius: 20px;
+  padding: 35px 26px;
+  text-align: left;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  border: 1px solid rgba(198,169,108,.6);
+}
+
+.letter-title {
+  font-family: 'Great Vibes', cursive;
+  text-align: center;
+  font-size: 43px;
+  color: var(--wine);
+  margin: 0 0 10px;
+}
+
+.divider {
+  text-align: center;
+  color: var(--gold);
+  margin: 20px 0;
+  letter-spacing: 6px;
+}
+
+.letter-content {
+  font-size: 21px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  min-height: 150px;
+}
+
+.signature {
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  color: var(--wine);
+  margin-top: 25px;
+}
+
+.music-btn {
+  max-width: 230px;
+  margin: 25px auto 0;
+  display: block;
+  background: rgba(255,255,255,.06);
+}
+
+.tree {
+  margin-top: 25px;
+  font-size: 28px;
+  letter-spacing: 8px;
+  color: var(--gold);
+  animation: pulse 4s infinite;
+}
+
+.hidden { display: none; }
+
+@media (max-width: 480px) {
+  .container { padding: 18px; }
+  .letter { padding: 27px 20px; }
+  .letter-content { font-size: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="snow"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<div class="container" id="pinScreen">
+  <div class="card">
+
+    <div class="top-icon">✧</div>
+
+    <h1 class="title">Our Little Winter</h1>
+
+    <div class="subtitle">A LITTLE SECRET ♡</div>
+
+    <p class="small-text">
+      Bu küçük dünyaya girmek için<br>
+      özel bir anahtara ihtiyacın var.
+    </p>
+
+    <div class="pin-box">
+
+      <div style="color:#D8A7B1;font-size:24px;margin-bottom:20px;">
+        ❄︎ &nbsp; ♡ &nbsp; ❄︎
+      </div>
+
+      <input
+        id="pin"
+        class="pin-input"
+        type="password"
+        inputmode="numeric"
+        maxlength="4"
+        placeholder="••••"
+        autocomplete="off"
+      >
+
+      <button class="enter-btn" onclick="unlock()">
+        Open my little world ♡
+      </button>
+
+      <div class="error" id="error"></div>
+
+    </div>
+
+    <div class="footer">
+      MADE WITH LOVE & A LITTLE MAGIC
+    </div>
+
+  </div>
+</div>
+
+<div class="container hidden" id="letterScreen">
+  <div class="card">
+
+    <div class="top-icon">✧</div>
+
+    <h1 class="title">Just for you</h1>
+
+    <div class="subtitle">MY FAVORITE LITTLE SECRET</div>
+
+    <div class="divider">✦ ❄︎ ✦</div>
+
+    <div class="letter">
+
+      <h2 class="letter-title">Sevgili sen...</h2>
+
+      <div class="divider">♡ &nbsp; ✧ &nbsp; ♡</div>
+
+      <div class="letter-content" id="letterText"></div>
+
+      <div class="signature" id="signature"></div>
+
+    </div>
+
+    <div class="tree">✧ ♡ ✧ ♡ ✧</div>
+
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+      ♫ &nbsp; Play our song
+    </button>
+
+    <div class="footer">
+      IN A WORLD FULL OF PEOPLE, I CHOOSE YOU.
+    </div>
+
+  </div>
+</div>
+
+<audio id="music" loop>
+  <source src="Lovers Rock.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const SECRET = "2609";
+
+const letter = `Bazen hayatın en güzel şeyleri, hiç planlamadığımız anlarda karşımıza çıkıyor.
+
+Seni tanımak da benim için öyle oldu.
+
+Bir gün sıradan bir günün içinde, hiç beklemediğim bir yerde, hayatımın en güzel detaylarından biri olacağını bilmediğim bir insanla tanıştım.
+
+Şimdi bazı günler seninle konuşmak, günümün en güzel kısmı oluyor. Bazen bir mesajın, bazen bir gülüşün, bazen de sadece varlığını bilmek...
+
+Sana büyük sözler vermekten ziyade, güzel anılar biriktirmek istiyorum. Birlikte gülmek, saçma şeylere takılmak, kahve içmek, yürümek, bazen hiçbir şey yapmadan sadece yan yana olmak...
+
+Ve dürüst olmak gerekirse, senin yanında romantik olmaya çalışırken bazen beynimin çalışmayı bırakması da ayrı bir konu. Bunu bilimsel olarak araştırmaları gerekiyor. 
+
+Yeni bir yıl yaklaşıyor. Herkes yeni dilekler tutacak, yeni başlangıçlar yapacak.
+
+Benim dileğim çok karmaşık değil. Güzel günlerimizin çoğalması, yüzünün daha çok gülmesi ve birlikte hatırlayacağımız anların birikmesi.
+
+Bu küçük site, belki dünyanın en büyük hediyesi değil. Ama içinde sana ayırdığım bir düşünce, biraz zaman ve çokça güzel his var.
+
+İyi ki karşıma çıktın. ♡`;
+
+const signatureText = "With love, always ♡";
+
+function unlock() {
+  const entered = document.getElementById("pin").value;
+  const error = document.getElementById("error");
+
+  if (entered === SECRET) {
+    document.getElementById("pinScreen").style.display = "none";
+    document.getElementById("letterScreen").classList.remove("hidden");
+    document.getElementById("letterScreen").style.display = "flex";
+    error.textContent = "";
+    typeLetter();
+  } else {
+    error.textContent = "Hmm... anahtar doğru değil. Bir daha dene ♡";
+    document.getElementById("pin").value = "";
+  }
+}
+
+document.getElementById("pin").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") unlock();
+});
+
+let typingStarted = false;
+
+function typeLetter() {
+  if (typingStarted) return;
+  typingStarted = true;
+
+  const element = document.getElementById("letterText");
+  const signature = document.getElementById("signature");
+
+  let i = 0;
+  element.textContent = "";
+
+  function write() {
+    if (i < letter.length) {
+      element.textContent += letter.charAt(i);
+      i++;
+      setTimeout(write, 24);
+    } else {
+      signature.textContent = signatureText;
+    }
+  }
+
+  write();
+}
+
+function toggleMusic() {
+  const music = document.getElementById("music");
+  const btn = document.getElementById("musicBtn");
+
+  if (music.paused) {
+    music.play().then(() => {
+      btn.textContent = "♫  Pause our song";
+    }).catch(() => {
+      btn.textContent = "♫  Try playing again";
+    });
+  } else {
+    music.pause();
+    btn.textContent = "♫  Play our song";
+  }
+}
+
+// Snowfall
+function createSnow() {
+  const snow = document.createElement("div");
+  snow.className = "snowflake";
+  snow.textContent = Math.random() > 0.5 ? "❄" : "✧";
+
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.fontSize = (Math.random() * 10 + 10) + "px";
+  snow.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+  document.getElementById("snow").appendChild(snow);
+
+  setTimeout(() => snow.remove(), 10000);
+}
+
+setInterval(createSnow, 250);
+</script>
+
+</body>
+</html>
